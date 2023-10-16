@@ -1,65 +1,52 @@
 'use strict';
 
 
-import {
-    news,
-    intelligence,
-    organization,
-    spiritual,
-    service,
-    opposition,
-    medical,
-    social,
-    educational,
-    thank,
-    contacts,
-    help,
-    schedule
-} from '../db_baseBlocks.json' assert {type: 'json'};
+import blocks  from '../blocks.json'
 
-import {
-    base,
-    structure,
-    documents,
-    education,
-    educationStandart,
-    teacher,
-    security,
-    scholarship,
-    available,
-    international
-} from '../blocks.json' assert {type: 'json'};
-
-let arrayBaseBlocks = {
-    news,
-    intelligence,
-    organization,
-    spiritual,
-    service,
-    opposition,
-    medical,
-    social,
-    educational,
-    thank,
-    contacts,
-    help,
-    schedule
-};
-console.log(arrayBaseBlocks)
-
-let arrayBlocks = {
-    base,
-    structure,
-    documents,
-    education,
-    educationStandart,
-    teacher,
-    security,
-    scholarship,
-    available,
-    international
-}
-console.log(arrayBlocks)
+import baseBlocks  from '../db_baseBlocks.json';
+console.log(blocks, baseBlocks)
+//     base,
+//     structure,
+//     documents,
+//     education,
+//     educationStandart,
+//     teacher,
+//     security,
+//     scholarship,
+//     available,
+//     international
+// } from '../blocks.json' assert {type: 'json'};
+//
+// let arrayBaseBlocks = {
+//     news,
+//     intelligence,
+//     organization,
+//     spiritual,
+//     service,
+//     opposition,
+//     medical,
+//     social,
+//     educational,
+//     thank,
+//     contacts,
+//     help,
+//     schedule
+// };
+// console.log(arrayBaseBlocks)
+//
+// let arrayBlocks = {
+//     base,
+//     structure,
+//     documents,
+//     education,
+//     educationStandart,
+//     teacher,
+//     security,
+//     scholarship,
+//     available,
+//     international
+// }
+// console.log(arrayBlocks)
 
 
 let data;
