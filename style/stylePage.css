@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/heebocyrillic.ttf");
+}
+.wrapper {
+    margin: 0 auto;
+    width: 100%;
+}
+.main_container {
+    width: 90%;
+    height: 100%;
+}
+.main__block {
+    margin:0 auto;
+    padding-top: 77px;
+    display: flex;
+    flex-direction: column;
+    gap: 66px;
+    align-items: center;
+    height: 100%;
+}
+
+.card {
+    width: 1336px;
+    height: 392px;
+    display: flex;
+    flex-direction: row;
+    background-color: #6C584F;
+    border: 0px;
+    align-items: center;
+    gap: 50px;
+}
+.img_card{
+    width: 382px;
+    height: 382px;
+    border-radius: 30px;
+
+}
+.title_card{
+    color: #FFF;
+    font-family: "Heebo", sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.text_card{
+    color: #F9F9F9;
+    font-family: "Heebo", sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.text_content_card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

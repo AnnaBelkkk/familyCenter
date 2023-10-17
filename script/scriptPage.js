@@ -1,65 +1,93 @@
-// function open(str, a ='='){
-//     let res = str.substring(str.lastIndexOf(a)+1)
-//     return res != str ? res: false;
-// }
-// let url = window.location.href.toString();
-// console.log(url)
-// let urlId = open(url);
-// console.log(urlId)
-// let urlAdres = url.slice(-10,-10)
-// console.log(urlAdres)
+import blocks from '../blocks.json'
 
-function back(){
+import baseBlocks from '../db_baseBlocks.json';
+
+console.log(blocks, baseBlocks)
+
+function open(str, a = '=') {
+    let res = str.substring(str.lastIndexOf(a) + 1)
+    return res != str ? res : false;
+}
+
+let url = window.location.href.toString();
+console.log(url)
+let urlId = open(url);
+console.log(urlId)
+let urlAdres = url.slice(-10, -10)
+console.log(urlAdres)
+
+
+function back() {
     history.back();
 }
-let isVisuallyEnabled = false;
-let visually = document.getElementById('visually')
-visually.addEventListener('click', function (){
-    let main__block_one = document.querySelector('.main__block_one')
-    let main__block_two = document.querySelector('.main__block_two')
-    let main__block_three = document.querySelector('.main__block_three')
-    let main__block_four = document.querySelector('.main__block_four')
-    let text_block = document.querySelector('.text_block')
-    let text_block_two = document.querySelector('.text_block_two')
-    let text_block_three = document.querySelector('.text_block_three')
-    let block_text_four = document.querySelector('.block_text_four')
-    let visually_text = document.querySelector('.visually_text')
-    let title_nav = document.querySelector('.title_nav')
-    let input_search = document.querySelector('.input_search::placeholder')
-    isVisuallyEnabled = !isVisuallyEnabled;
-    if (isVisuallyEnabled) {
-        document.body.style.fontSize = '';
-        main__block_one.style.fontSize = '' ;
-        // Настройка цветовой схемы
-        document.body.style.backgroundColor = '';
-        main__block_one.style.backgroundColor = '';
-        main__block_two.style.backgroundColor = '';
-        main__block_three.style.backgroundColor = '';
-        main__block_four.style.backgroundColor = '';
-        text_block.style.fontSize = '';
-        text_block_two.style.fontSize = '';
-        text_block_three.style.fontSize = '';
-        block_text_four.style.fontSize = '';
-        visually_text.style.fontSize = ''
-        title_nav.style.fontSize = ''
-        input_search.style.fontSize=''
-        document.body.style.color = '';
-    } else {
-        document.body.style.fontSize = '1.2rem';
-        main__block_one.style.fontSize = '50px';
-        // Настройка цветовой схемы
-        document.body.style.backgroundColor = 'black';
-        main__block_one.style.backgroundColor = 'black';
-        main__block_two.style.backgroundColor = 'black';
-        main__block_three.style.backgroundColor = 'black';
-        main__block_four.style.backgroundColor = 'black';
-        document.body.style.color = 'white';
-        text_block.style.fontSize = '25px';
-        text_block_two.style.fontSize = '25px';
-        text_block_three.style.fontSize = '25px';
-        block_text_four.style.fontSize = '25px';
-        visually_text.style.fontSize = '20px'
-        title_nav.style.fontSize = '20px'
-        input_search.style.fontSize='20px'
+
+let menuItems = document.querySelectorAll('.dropdown-item');
+let titleNav = document.querySelector('#select_home');
+menuItems.forEach(item => {
+    if (item.id === urlId) {
+        console.log(item.textContent);
+        titleNav.id = item.id;
+        titleNav.textContent = item.textContent
     }
-})
+});
+const main_container = document.querySelector('.main_container')
+let main_blocks = document.querySelector('.main__block')
+let arrayValue = baseBlocks.baseBlocks[urlId]
+let array = arrayValue[0]
+if (urlId === 'news') {
+    main_blocks.innerHTML = ''
+    main_container.style.background = '#6C584F';
+    main_blocks.style.height = '5514px'
+    console.log(arrayValue[0].block1.textContent.text1)
+    console.log(arrayValue[0].block1.images.img1)
+    console.log(arrayValue)
+    for (let i in array) {
+        console.log(i, array[i].textContent)
+        main_blocks.innerHTML += `
+        <div class="card" id="${i}">
+            <img  src="../${array[i].images.img1}" class = "img_card">
+            <div class="text_content_card">
+                <div class="title_card">${array[i].title}</div>
+                <div class="text_card">${array[i].textContent.text1}</div>
+            </div>       
+        </div>
+        `
+    }
+} else if (urlId === 'intelligence'){
+    main_blocks.innerHTML = ''
+    main_container.style.background = '#363B39';
+    main_blocks.style.height = '1080px'
+    let arrayValue = baseBlocks.baseBlocks[urlId]
+    console.log(arrayValue)
+    let text = forEach.array.block.textContent
+    console.log(text)
+    for (let i in array) {
+        console.log(i, array[i].textContent)
+        main_blocks.innerHTML += `
+        <div class="intrelligence" id="${i}">
+            <div class="text_content_card">
+                <div class="title_intrelligence">${array[i].title}</div>
+                <div class="text_intrelligence"></div>
+            </div>       
+        </div>
+        `
+    }
+}
+
+
+// let isVisuallyEnabled = false;
+// let visually = document.getElementById('visually')
+// visually.addEventListener('click', function (){
+//     const main_container = document.querySelector('.main_container')
+//     let card = document.querySelectorAll('.card')
+//     isVisuallyEnabled = !isVisuallyEnabled;
+//     if (isVisuallyEnabled) {
+//         card.style.backgroundColor = '#6C584F'
+//         main_container.style.backgroundColor = '#6C584F'
+//         document.body.style.color = '';
+//     } else {
+//         card.style.backgroundColor = 'black'
+//         main_container.style.backgroundColor = 'black'
+//     }
+// })
+
