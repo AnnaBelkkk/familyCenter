@@ -11,7 +11,9 @@
 ::-webkit-scrollbar {
     width: 0;
 }
-
+a {
+    text-decoration: none;
+}
 @font-face {
     font-family: "Ubuntu";
     font-style: normal;
@@ -323,9 +325,6 @@ option:active, option:hover {
     color: white;
 }
 
-a {
-    text-decoration: none;
-}
 
 .dropdown-toggle, .dropdown-toggle:active {
     color: white;
