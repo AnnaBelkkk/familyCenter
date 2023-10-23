@@ -1,47 +1,42 @@
-import blocks from '../blocks.json'
 
-import baseBlocks from '../db_baseBlocks.json';
-import {pageLinks, pageStandart, pageSlider, pageImg} from '/script/scriptPageTransition.js'
-console.log(blocks, baseBlocks)
+import {pageStandart, pageSlider, pageImgText, url,urlId, urlAdres} from '/script/scriptPageTransition.js'
+// console.log(blocks, baseBlocks)
 
-export function open(str, a = '=') {
-    let res = str.substring(str.lastIndexOf(a) + 1)
-    return res != str ? res : false;
-}
-
-let url = window.location.href.toString();
-console.log(url)
-let urlId = open(url);
-console.log(urlId)
-let urlAdres = url.slice(-10, -10)
-console.log(urlAdres)
-
-
-function back() {
-    history.back();
-}
+// export function open(str, a = '=') {
+//     let res = str.substring(str.lastIndexOf(a) + 1)
+//     return res != str ? res : false;
+// }
+// let url = window.location.href.toString();
+// // console.log(url)
+// let urlId = open(url);
+// // console.log(urlId)
+// let urlAdres = url.slice(-10, -10)
+// // console.log(urlAdres)
+//
 // export function change() {
 //     let menuItems = document.querySelectorAll('.dropdown-item');
-//     let titleNav = document.querySelector('#select_home');
+//     let titleNav = document.querySelector('.title_nav');
 //     menuItems.forEach(item => {
 //         if (item.id === urlId) {
-//             console.log(item.textContent);
+//             // console.log(item.textContent);
 //             titleNav.id = item.id;
 //             titleNav.textContent = item.textContent
 //         }
 //     });
 // }
-// change()
+//export {url,urlId, urlAdres}
+
+function back() {
+    history.back();
+}
 
 if (urlId === 'news') {
     pageStandart()
-} else if (urlId === 'intelligence' || urlId === 'organization' || urlId === 'social' ||  urlId === 'education'||  urlId === 'help' || urlId === 'schedule'){
-  pageLinks()
+} else if (urlId === 'intelligence' || urlId === 'organization' || urlId === 'social' ||  urlId === 'education'||  urlId === 'help' || urlId === 'schedule' ||urlId === 'service' || urlId === 'medical' || urlId === 'contacts'){
+    pageImgText()
 
 } else if (urlId === 'spiritual' || urlId === 'thank'){
     pageSlider()
-}else if (urlId === 'service' || urlId === 'medical' || urlId === 'contacts'){
-    pageImg()
 }
 
 
@@ -59,5 +54,5 @@ if (urlId === 'news') {
 //         card.style.backgroundColor = 'black'
 //         main_container.style.backgroundColor = 'black'
 //     }
-// })
+// })0
 

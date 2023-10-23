@@ -1,28 +1,39 @@
 import baseBlocks from "../db_baseBlocks.json";
-import blocks from "../blocks.json";
-import {open} from '/script/scriptPage.js'
+import blockslinks from "../blocks.json"
+//import {url, urlId, urlAdres, change, open} from "./scriptPage.js"
+export function open(str, a = '=') {
+    let res = str.substring(str.lastIndexOf(a) + 1)
+    return res != str ? res : false;
+}
+let url = window.location.href.toString();
+// console.log(url)
+let urlId = open(url);
+// console.log(urlId)
+let urlAdres = url.slice(-10, -10)
+// console.log(urlAdres)
 
-
-
-
-
-
-//change()
+export function change() {
+    let menuItems = document.querySelectorAll('.dropdown-item');
+    let titleNav = document.querySelector('.title_nav');
+    menuItems.forEach(item => {
+        if (item.id === urlId) {
+            // console.log(item.textContent);
+            titleNav.id = item.id;
+            titleNav.textContent = item.textContent
+        }
+    });
+}
+change()
+export {url,urlId, urlAdres}
 export function pageStandart(){
     let main_blocks = document.querySelector('.main__block')
-    let url = window.location.href.toString();
-    console.log(url)
-    let urlId = open(url);
-    console.log(urlId)
-    let urlAdres = url.slice(-10, -10)
-    console.log(urlAdres)
     let arrayValue = baseBlocks.baseBlocks[urlId]
     let array = arrayValue[0]
     main_blocks.innerHTML = ''
     main_blocks.classList.add(`${urlId}`)
-    console.log(arrayValue)
+    //console.log(arrayValue)
     for (let i in array) {
-        console.log(i, array[i].textContent)
+        //console.log(i, array[i].textContent)
         main_blocks.innerHTML += `
         <div class="card_content_${urlId} itemcard_content" id="${i}">
             <img  src="../${array[i].images.img1}" class = "img_${urlId}">
@@ -35,19 +46,19 @@ export function pageStandart(){
     }
 }
 
-export function pageLinks(){
+
+export function pageImgText(){
+    debugger
     let main_blocks = document.querySelector('.main__block')
-    let url = window.location.href.toString();
-    console.log(url)
-    let urlId = open(url);
-    console.log(urlId)
-    let urlAdres = url.slice(-10, -10)
-    console.log(urlAdres)
     let arrayValue = baseBlocks.baseBlocks[urlId]
     let array = arrayValue[0]
+    let count = 1;
+    let blocks = blockslinks.blockslinks
+
     let content_block = document.getElementById('content_block')
     let createTttile = document.createElement('div')
     let text = array.block.textContent
+    let img = array.block.images
     content_block.innerHTML = ''
     content_block.classList.add(`${urlId}`)
     createTttile.classList.add(`title_block_${urlId}`)
@@ -56,9 +67,9 @@ export function pageLinks(){
     createTttile.classList.add('itemtitlebefore')
     createTttile.textContent = array.block.title
     content_block.append(createTttile)
-
+    let images = document.createElement('div')
+    images.classList.add(`images_${urlId}`)
     for (let i in text) {
-
         content_block.innerHTML += `
         <div class="card_content_${urlId} itemcard_content" id="${i}">
             <div class="text_content_${urlId} itemcard">
@@ -69,16 +80,49 @@ export function pageLinks(){
         </div>
         `
     }
+    let itemcard_content = document.querySelector('.itemcard_content')
+    console.log(itemcard_content)
+    if (img !== 'undefined') {
+        for (let i in img) {
+            console.log(i)
+            images.innerHTML += ` 
+                 <img src="../image/${urlId}${count}.png" class="img_${urlId}">
+        `
+            count++
+            itemcard_content.append(images)
+        }
+    }
+    if (urlId === 'intelligence'){
+        let aId = document.querySelectorAll('.a_intelligence')
+        let arrayBlocks = ['base', 'structure','documents','education', 'educationStandart', 'teacher','security', 'scholarship', 'available','international']
+        for (const [index, element] of aId.entries()) {
+            element.id = arrayBlocks[index];
+            element.href = arrayBlocks[index]
+        }
+    } else if (urlId === 'contacts'){
+        console.log(123456789)
+        let imagesCardContact = document.createElement('div')
+        imagesCardContact.classList.add('images_contacts')
+        // let content_block_beforee = document.querySelector('.content_block_beforee')
+        // content_block_beforee.style.display = 'block'
+        // content_block_beforee.id = 'imageMaps'
+        // content_block_beforee.append(imagesCardContact)
+        content_block.append(imagesCardContact)
+        let images_contacts = document.querySelector('.images_contacts')
+        images_contacts.innerHTML=''
+        let map;
+        function maps(){
+            map = new ymaps.Map(images_contacts, {
+                center: [56.339831, 38.140545],
+                zoom: 16
+            });
+        }
+        ymaps.ready(maps);
+    }
 }
 
 export function pageSlider(){
     let main_blocks = document.querySelector('.main__block')
-    let url = window.location.href.toString();
-    console.log(url)
-    let urlId = open(url);
-    console.log(urlId)
-    let urlAdres = url.slice(-10, -10)
-    console.log(urlAdres)
     let arrayValue = baseBlocks.baseBlocks[urlId]
     let array = arrayValue[0]
     let content_block = document.getElementById('content_block')
@@ -163,83 +207,5 @@ export function pageSlider(){
     }
 }
 
-export function pageImg(){
-    let main_blocks = document.querySelector('.main__block')
-    let url = window.location.href.toString();
-    console.log(url)
-    let urlId = open(url);
-    console.log(urlId)
-    let urlAdres = url.slice(-10, -10)
-    console.log(urlAdres)
-    let arrayValue = baseBlocks.baseBlocks[urlId]
-    let array = arrayValue[0]
-    let content_block = document.getElementById('content_block')
-    let createTttile = document.createElement('div')
-    content_block.innerHTML = ''
-    let text = array.block.textContent
-    content_block.classList.add(`${urlId}`)
-    createTttile.classList.add(`title_block_${urlId}`)
-    createTttile.id = urlId
-    main_blocks.classList.add(`main_${urlId}`)
-    createTttile.textContent = array.block.title
-    if (urlId === 'service' ) {
-        for (let i in text) {
-            // console.log(i, array[i].textContent)
-            content_block.innerHTML += `
-        <div class="card_content_${urlId} itemcard_content" id="${i}">
-            <div class="text_content_${urlId} itemcard">
-                <a href="#" class="a_${urlId} itemHref" id="${text[i].id}" >
-                    <div class="text_${urlId} itemtext">${text[i]}</div>
-                </a>
-            </div>       
-             <img src="../image/serviceimg.png" class="img_${urlId}">
-        </div>
-        `
-        }
-    } else if(urlId === 'medical' ){
-        for (let i in text) {
-            // console.log(i, array[i].textContent)
-            content_block.innerHTML += `
-  <div class="images_${urlId}">   
-                 <img src="../image/medical1.png" class="img_${urlId}">
-                  <img src="../image/medical2.png" class="img_${urlId}">
-              </div>
-        </div>
-        <div class="card_content_${urlId} itemcard_content" id="${i}">
-            <div class="text_content_${urlId} itemcard">
-                <a href="#" class="a_${urlId} itemHref" id="${text[i].id}" >
-                    <div class="text_${urlId} itemtext">${text[i]}</div>
-                </a>
-            </div>    
-        `
-        }
-    } else if(urlId === 'contacts' ){
-        let maps = document.createElement('div')
-            for (let i in text) {
-                // console.log(i, array[i].textContent)
-                content_block.innerHTML += `
-    <div class="card_content_${urlId} itemcard_content" id="${i}">
-            <div class="text_content_${urlId} itemcard">
-                <a href="#" class="a_${urlId} itemHref" id="${text[i].id}" >
-                    <div class="text_${urlId} itemtext">${text[i]}</div>
-                </a>
-            </div>       
-        </div>
-        `}
-        maps.classList.add('maps')
-        maps.id = 'maps'
-            content_block.append(maps)
-    }
 
 
-}
-let map;
-let divMap = document.getElementById('maps');
-console.log(divMap)
-function maps(){
-    map = new ymaps.Map(divMap, {
-        center: [56.339831, 38.140545],
-        zoom: 16
-    });
-}
-ymaps.ready(maps);

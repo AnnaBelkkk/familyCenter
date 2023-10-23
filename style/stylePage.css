@@ -77,10 +77,14 @@
     font-weight: 400;
     line-height: normal;
 }
-.text_news, .card_content_medical .main_contacts{
+.text_news,.main_contacts{
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+.card_content_medical{
+    display: flex;
+    flex-direction: column-reverse;
 }
 .main_intelligence,.intelligence, .main_contacts,.contacts{
     background-color: #363B39;
@@ -152,7 +156,16 @@
     gap: 200px;
     padding-bottom: 60px;
 }
-.maps{
+.images_contacts{
     width: 500px;
-    height: 400px;
+    height: 300px;
+    align-self: flex-end;
+    margin-top: -250px;
 }
+.card_content_contacts{
+    width: 580px;
+
+}
+/*.content_block_beforee{*/
+/*    display: none;*/
+/*}*/
