@@ -61,16 +61,17 @@ if (array.block != undefined ){
 
 if (urlId === 'news') {
     pageStandart(arrayValue,array,main_blocks)
-} else if (urlId === 'intelligence' || urlId === 'organization' || urlId === 'social' ||  urlId === 'education'||  urlId === 'help' || urlId === 'schedule' ||urlId === 'service' || urlId === 'medical' || urlId === 'contacts'){
+} else if (urlId === 'intelligence' || urlId === 'organization' || urlId === 'social' ||  urlId === 'education'||  urlId === 'help' || urlId === 'schedule' ||urlId === 'service' || urlId === 'medical' || urlId === 'contacts' || urlId === 'base'|| urlId === 'structure' || urlId === 'documents'|| urlId === 'educations' || urlId === 'educationStandart' || urlId === 'teacher'|| urlId === 'security' || urlId ==='scholarship' || urlId === 'international'){
     pageImgText(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
 
-} else if (urlId === 'spiritual' || urlId === 'thank'){
-    pageSlider(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
-} else if (urlId === 'base'|| urlId === 'structure' || urlId === 'documents'|| urlId === 'educations' || urlId === 'educationStandart' || urlId === 'teacher'|| urlId === 'security' || urlId ==='scholarship' || urlId === 'international'){
-    pageImgText(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
-} else if(urlId === 'available'){
+} else if (urlId === 'spiritual' || urlId === 'thank' || urlId === 'available') {
     pageSlider(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
 }
+// } else if (urlId === 'base'|| urlId === 'structure' || urlId === 'documents'|| urlId === 'educations' || urlId === 'educationStandart' || urlId === 'teacher'|| urlId === 'security' || urlId ==='scholarship' || urlId === 'international'){
+//     pageImgText(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
+// } else if(urlId === 'available'){
+//     pageSlider(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
+// }
 
 
 // let isVisuallyEnabled = false;
