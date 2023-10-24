@@ -1,5 +1,7 @@
 
 import {pageStandart, pageSlider, pageImgText, url,urlId, urlAdres} from '/script/scriptPageTransition.js'
+import baseBlocks from "../db_baseBlocks.json";
+import blockslinks from "../blocks.json";
 // console.log(blocks, baseBlocks)
 
 // export function open(str, a = '=') {
@@ -29,14 +31,45 @@ import {pageStandart, pageSlider, pageImgText, url,urlId, urlAdres} from '/scrip
 function back() {
     history.back();
 }
+let text;
+let img;
+let main_blocks = document.querySelector('.main__block')
+let arrayValue = baseBlocks.baseBlocks[urlId]
+let content_block = document.getElementById('content_block')
+let createTitle = document.createElement('div')
+let array ;
+let count = 1;
+let blocks = blockslinks.blockslinks
+let blocksTwo;
+console.log(blocks)
+
+if (urlId === 'base' || urlId === 'structure' || urlId === 'documents' || urlId === 'educations'|| urlId === 'educationStandart' || urlId === 'teacher'|| urlId === 'security' || urlId ==='scholarship' || urlId === 'available' || urlId === 'international'){
+    blocksTwo = blockslinks.blockslinks[urlId][0]
+    array = blocksTwo;
+    console.log(array)
+
+} else {
+    array = arrayValue[0];
+}
+if (array.block != undefined ){
+    console.log(array.block)
+    text = array.block.textContent;
+    img = array.block.images
+    console.log(img)
+}
+
 
 if (urlId === 'news') {
-    pageStandart()
+    pageStandart(arrayValue,array,main_blocks)
 } else if (urlId === 'intelligence' || urlId === 'organization' || urlId === 'social' ||  urlId === 'education'||  urlId === 'help' || urlId === 'schedule' ||urlId === 'service' || urlId === 'medical' || urlId === 'contacts'){
-    pageImgText()
+    pageImgText(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
 
 } else if (urlId === 'spiritual' || urlId === 'thank'){
-    pageSlider()
+    pageSlider(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
+} else if (urlId === 'base'|| urlId === 'structure' || urlId === 'documents'|| urlId === 'educations' || urlId === 'educationStandart' || urlId === 'teacher'|| urlId === 'security' || urlId ==='scholarship' || urlId === 'international'){
+    pageImgText(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
+} else if(urlId === 'available'){
+    pageSlider(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
 }
 
 

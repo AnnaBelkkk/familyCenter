@@ -25,10 +25,10 @@ export function change() {
 }
 change()
 export {url,urlId, urlAdres}
-export function pageStandart(){
-    let main_blocks = document.querySelector('.main__block')
-    let arrayValue = baseBlocks.baseBlocks[urlId]
-    let array = arrayValue[0]
+export function pageStandart(arrayValue,array,main_blocks){
+    // let main_blocks = document.querySelector('.main__block')
+    // let arrayValue = baseBlocks.baseBlocks[urlId]
+    // let array = arrayValue[0]
     main_blocks.innerHTML = ''
     main_blocks.classList.add(`${urlId}`)
     //console.log(arrayValue)
@@ -47,26 +47,33 @@ export function pageStandart(){
 }
 
 
-export function pageImgText(){
-    debugger
-    let main_blocks = document.querySelector('.main__block')
-    let arrayValue = baseBlocks.baseBlocks[urlId]
-    let array = arrayValue[0]
-    let count = 1;
-    let blocks = blockslinks.blockslinks
+export function pageImgText(main_blocks, arrayValue,  content_block, createTitle, array, count, blocks, text, img){
+    // let main_blocks = document.querySelector('.main__block')
+    // let arrayValue = baseBlocks.baseBlocks[urlId]
 
-    let content_block = document.getElementById('content_block')
-    let createTttile = document.createElement('div')
-    let text = array.block.textContent
-    let img = array.block.images
+    // let array = arrayValue[0]
+    // let count = 1;
+    // let blocks = blockslinks.blockslinks
+
+
+    // let content_block = document.getElementById('content_block')
+    // let createTttile = document.createElement('div')
+    // let text = array.block.textContent
+    // let img = array.block.images
     content_block.innerHTML = ''
     content_block.classList.add(`${urlId}`)
-    createTttile.classList.add(`title_block_${urlId}`)
-    createTttile.id = urlId
+    createTitle.classList.add(`title_block_${urlId}`)
+    createTitle.id = urlId
     main_blocks.classList.add(`main_${urlId}`)
-    createTttile.classList.add('itemtitlebefore')
-    createTttile.textContent = array.block.title
-    content_block.append(createTttile)
+    createTitle.classList.add('itemtitlebefore')
+    if (array.block!= undefined){
+        createTitle.textContent = array.block.title
+    } else {
+        console.log(array)
+        console.log(array.urlId)
+    }
+    //createTttile.textContent = array.block.title
+    content_block.append(createTitle)
     let images = document.createElement('div')
     images.classList.add(`images_${urlId}`)
     for (let i in text) {
@@ -82,7 +89,7 @@ export function pageImgText(){
     }
     let itemcard_content = document.querySelector('.itemcard_content')
     console.log(itemcard_content)
-    if (img !== 'undefined') {
+    if (img !== undefined) {
         for (let i in img) {
             console.log(i)
             images.innerHTML += ` 
@@ -94,19 +101,15 @@ export function pageImgText(){
     }
     if (urlId === 'intelligence'){
         let aId = document.querySelectorAll('.a_intelligence')
-        let arrayBlocks = ['base', 'structure','documents','education', 'educationStandart', 'teacher','security', 'scholarship', 'available','international']
+        let arrayBlocks = ['base', 'structure','documents','educations', 'educationStandart', 'teacher','security', 'scholarship', 'available','international']
         for (const [index, element] of aId.entries()) {
             element.id = arrayBlocks[index];
-            element.href = arrayBlocks[index]
+            element.href = `../pageTransition/index.html?=${arrayBlocks[index]}`
         }
     } else if (urlId === 'contacts'){
         console.log(123456789)
         let imagesCardContact = document.createElement('div')
         imagesCardContact.classList.add('images_contacts')
-        // let content_block_beforee = document.querySelector('.content_block_beforee')
-        // content_block_beforee.style.display = 'block'
-        // content_block_beforee.id = 'imageMaps'
-        // content_block_beforee.append(imagesCardContact)
         content_block.append(imagesCardContact)
         let images_contacts = document.querySelector('.images_contacts')
         images_contacts.innerHTML=''
@@ -118,24 +121,44 @@ export function pageImgText(){
             });
         }
         ymaps.ready(maps);
+    }else if(urlId === 'base' || urlId === 'structure'|| urlId === 'documents' || urlId === 'educations'|| urlId === 'educationStandart' || urlId === 'teacher'|| urlId === 'security' || urlId ==='scholarship' || urlId === 'available' || urlId === 'international' ){
+        debugger
+        let itemtitlebefore = document.getElementById(`${urlId}`)
+        let arrowImgBtn = document.createElement('button')
+        arrowImgBtn.classList.add('arrow_back')
+        let arrowImg = document.createElement('img')
+        arrowImgBtn.append(arrowImg)
+        arrowImg.src = '../img/arrowBack.png'
+        arrowImg.classList.add('imgArrowBack')
+        itemtitlebefore.append(arrowImgBtn)
+        arrowImgBtn.addEventListener('click', e =>{
+            history.back()
+        })
     }
 }
 
-export function pageSlider(){
-    let main_blocks = document.querySelector('.main__block')
-    let arrayValue = baseBlocks.baseBlocks[urlId]
-    let array = arrayValue[0]
-    let content_block = document.getElementById('content_block')
-    let createTttile = document.createElement('div')
+export function pageSlider(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img){
+    // let main_blocks = document.querySelector('.main__block')
+    // let arrayValue = baseBlocks.baseBlocks[urlId]
+    // let array = arrayValue[0]
+    // let content_block = document.getElementById('content_block')
+    // let createTttile = document.createElement('div')
     content_block.innerHTML = ''
-    let text = array.block.textContent
+    // let text = array.block.textContent
     content_block.classList.add(`${urlId}`)
-    createTttile.classList.add(`title_block_${urlId}`)
-    createTttile.id = urlId
+    createTitle.classList.add(`title_block_${urlId}`)
+    createTitle.id = urlId
     main_blocks.classList.add(`main_${urlId}`)
-    createTttile.classList.add('itemtitlebefore')
-    createTttile.textContent = array.block.title
-    content_block.append(createTttile)
+    createTitle.classList.add('itemtitlebefore')
+
+    // createTitle.textContent = array.block.title
+    if (array.block!= undefined){
+        createTitle.textContent = array.block.title
+    } else {
+        console.log(array)
+        console.log(array.urlId)
+    }
+    content_block.append(createTitle)
     if (urlId === 'spiritual') {
         for (let i in text) {
             // console.log(i, array[i].textContent)
@@ -143,13 +166,13 @@ export function pageSlider(){
         <div id="carouselExampleFade" class="carousel slide carousel-fade carousel_${urlId} ">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="siderImg" src="../image/spritualimg1.png" class="d-block w-100" alt="...">
+                                <img class="siderImg_${urlId}" src="../image/${urlId}1.png" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img class="siderImg" src="../image/spritualimg2.png" class="d-block w-100" alt="...">
+                                <img class="siderImg_${urlId}" src="../image/${urlId}2.png" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img class="siderImg" src="../image/spritualimg3.png" class="d-block w-100" alt="...">
+                                <img class="siderImg_${urlId}" src="../image/${urlId}3.png" class="d-block w-100" alt="...">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -172,7 +195,49 @@ export function pageSlider(){
         </div>
         `
         }
-    } else if(urlId === 'thank'){
+    }else if (urlId === 'available') {
+        for (let i in text) {
+            // console.log(i, array[i].textContent)
+            content_block.innerHTML += `
+        <div id="carouselExampleFade" class="carousel slide carousel-fade carousel_${urlId} ">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active carousel-item_available">
+                                <img class="siderImg_${urlId}" src="../image/${urlId}1.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="siderImg_${urlId}" src="../image/${urlId}2.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="siderImg_${urlId}" src="../image/${urlId}3.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="siderImg_${urlId}" src="../image/${urlId}4.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="siderImg_${urlId}" src="../image/${urlId}5.png" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+        <div class="card_content_${urlId} itemcard_content" id="${i}">
+            <div class="text_content_${urlId} itemcard">
+                <a href="#" class="a_${urlId} itemHref" id="${text[i].id}" >
+                    <div class="text_${urlId} itemtext">${text[i]}</div>
+                </a>
+            </div>       
+        </div>
+        `
+        }
+    }else if(urlId === 'thank'){
         for (let i in text) {
             // console.log(i, array[i].textContent)
             content_block.innerHTML += `
@@ -204,8 +269,22 @@ export function pageSlider(){
                     </div>
         `
         }
+    } if( urlId === 'available' ){
+        debugger
+        let itemtitlebefore = document.getElementById(`${urlId}`)
+        let arrowImgBtn = document.createElement('button')
+        arrowImgBtn.classList.add('arrow_back')
+        let arrowImg = document.createElement('img')
+        arrowImgBtn.append(arrowImg)
+        arrowImg.src = '../img/arrowBack.png'
+        arrowImg.classList.add('imgArrowBack')
+        itemtitlebefore.append(arrowImgBtn)
+        arrowImgBtn.addEventListener('click', e =>{
+            history.back()
+        })
     }
 }
+
 
 
 
