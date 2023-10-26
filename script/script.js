@@ -1,4 +1,5 @@
 //прокрутка на сайте
+//эта функция убирает скрол на сайте и более плавно и красиво делает переход между блоками на главной странице
 function Scrolling() {
     const blocksContainer = document.querySelector('.main__blocks');
     const blocks = document.querySelectorAll('.block_item');
@@ -20,26 +21,16 @@ function Scrolling() {
     });
 }
 
-
+//эта функция меняет содержание айди и тескта в выпадающем меню
 export function changingTextValueTheDrop_DawnMenu() {
-// Получаем все пункты меню
     let menuItems = document.querySelectorAll('.dropdown-item');
-    //console.log(menuItems)
-// Получаем элемент с классом "title_nav"
     let titleNav = document.querySelector('#select_home');
     let titleNav2 = document.querySelector('#select_home');
-    //console.log(titleNav.textContent)
-    //console.log(titleNav.id)
-// Добавляем обработчик события клика на каждый пункт меню
     menuItems.forEach(function (item) {
         item.addEventListener('click', function (event) {
             // Отменяем стандартное действие ссылки
             event.preventDefault();
-
-            // Получаем текст выбранного пункта меню
             let menuItemText = item.textContent;
-            //console.log(item, item.textContent, item.id)
-            // Меняем текст элемента "a" с классом "title_nav"
             titleNav.textContent = menuItemText;
             titleNav.id = item.id;
         });

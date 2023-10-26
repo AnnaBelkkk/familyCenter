@@ -81,7 +81,8 @@
     font-size: 25px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    /*line-height: normal;*/
+    line-height: 143.1%;
 }
 .text_news,.main_contacts, .images_structure{
     display: flex;
@@ -130,7 +131,7 @@
 .carousel_spiritual {
     margin: 0 auto;
 }
-.title_block_social, .title_block_education, .title_block_help{
+.title_block_social, .title_block_help{
     padding-bottom: 60px;
 }
 .siderImg_spiritual{
@@ -178,11 +179,12 @@
     margin: 0 auto;
 }
 
-.title_block_base,.title_block_documents,.title_block_structure ,.title_block_educations, .title_block_educationStandart,.title_block_teacher,.title_block_security, .title_block_scholarship, .title_block_available,.title_block_international{
+.title_block_base,.title_block_documents,.title_block_structure ,.title_block_educations, .title_block_educationStandart,.title_block_teacher,.title_block_security, .title_block_scholarship, .title_block_available,.title_block_international,.title_block_education{
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
     gap: 20px;
+    margin-left: -46px;
 }
 .card_content_service{
     flex-direction: row;
@@ -215,7 +217,3 @@
 .text_intelligence{
     text-decoration:underline;
 }
-
-/*.content_block_beforee{*/
-/*    display: none;*/
-/*}*/

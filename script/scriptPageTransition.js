@@ -1,17 +1,14 @@
-import baseBlocks from "../db_baseBlocks.json";
-import blockslinks from "../blocks.json"
-//import {url, urlId, urlAdres, change, open} from "./scriptPage.js"
+//функция для получения значения из адресной строки
 export function open(str, a = '=') {
     let res = str.substring(str.lastIndexOf(a) + 1)
     return res != str ? res : false;
 }
+//получение данных из адресной строки
 let url = window.location.href.toString();
-// console.log(url)
 let urlId = open(url);
-// console.log(urlId)
 let urlAdres = url.slice(-10, -10)
-// console.log(urlAdres)
 
+//смена текста и айди в выпадающем меню для отрисованных страниц
 export function change() {
     let menuItems = document.querySelectorAll('.dropdown-item');
     let titleNav = document.querySelector('.title_nav');
@@ -23,17 +20,15 @@ export function change() {
         }
     });
 }
+
 change()
-export {url,urlId, urlAdres}
-export function pageStandart(arrayValue,array,main_blocks){
-    // let main_blocks = document.querySelector('.main__block')
-    // let arrayValue = baseBlocks.baseBlocks[urlId]
-    // let array = arrayValue[0]
+export {url, urlId, urlAdres}
+
+//функция для  верстки страницы новостей, так как она содержит в себе иное построение блоков в json и получение данных
+export function pageStandart(arrayValue, array, main_blocks) {
     main_blocks.innerHTML = ''
     main_blocks.classList.add(`${urlId}`)
-    //console.log(arrayValue)
     for (let i in array) {
-        //console.log(i, array[i].textContent)
         main_blocks.innerHTML += `
         <div class="card_content_${urlId} itemcard_content" id="${i}">
             <img  src="../${array[i].images.img1}" class = "img_${urlId}">
@@ -46,33 +41,17 @@ export function pageStandart(arrayValue,array,main_blocks){
     }
 }
 
-
-export function pageImgText(main_blocks, arrayValue,  content_block, createTitle, array, count, blocks, text, img){
-    // let main_blocks = document.querySelector('.main__block')
-    // let arrayValue = baseBlocks.baseBlocks[urlId]
-
-    // let array = arrayValue[0]
-    // let count = 1;
-    // let blocks = blockslinks.blockslinks
-
-
-    // let content_block = document.getElementById('content_block')
-    // let createTttile = document.createElement('div')
-    // let text = array.block.textContent
-    // let img = array.block.images
+//функция для всех страниц, с проверкой того нужна ли картинка на сайте или нет, если да, то сколько блоков с изображениями, функция содержит еще условия так, как некоторые страницы имеют дополнительные параметры или построение
+export function pageImgText(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img) {
     content_block.innerHTML = ''
     content_block.classList.add(`${urlId}`)
     createTitle.classList.add(`title_block_${urlId}`)
     createTitle.id = urlId
     main_blocks.classList.add(`main_${urlId}`)
     createTitle.classList.add('itemtitlebefore')
-    if (array.block!= undefined){
+    if (array.block !== undefined) {
         createTitle.textContent = array.block.title
-    } else {
-        console.log(array)
-        console.log(array.urlId)
     }
-    //createTttile.textContent = array.block.title
     content_block.append(createTitle)
     let images = document.createElement('div')
     images.classList.add(`images_${urlId}`)
@@ -88,7 +67,7 @@ export function pageImgText(main_blocks, arrayValue,  content_block, createTitle
         `
     }
     let itemcard_content = document.querySelector('.itemcard_content')
-    console.log(itemcard_content)
+    //console.log(itemcard_content)
     if (img !== undefined) {
         for (let i in img) {
             console.log(i)
@@ -99,30 +78,30 @@ export function pageImgText(main_blocks, arrayValue,  content_block, createTitle
             itemcard_content.append(images)
         }
     }
-    if (urlId === 'intelligence'){
+    if (urlId === 'intelligence') {
         let aId = document.querySelectorAll('.a_intelligence')
-        let arrayBlocks = ['base', 'structure','documents','educations', 'educationStandart', 'teacher','security', 'scholarship', 'available','international']
+        let arrayBlocks = ['base', 'structure', 'documents', 'educations', 'educationStandart', 'teacher', 'security', 'scholarship', 'available', 'international']
         for (const [index, element] of aId.entries()) {
             element.id = arrayBlocks[index];
             element.href = `../pageTransition/index.html?=${arrayBlocks[index]}`
         }
-    } else if (urlId === 'contacts'){
-        console.log(123456789)
+    } else if (urlId === 'contacts') {
         let imagesCardContact = document.createElement('div')
         imagesCardContact.classList.add('images_contacts')
         content_block.append(imagesCardContact)
         let images_contacts = document.querySelector('.images_contacts')
-        images_contacts.innerHTML=''
+        images_contacts.innerHTML = ''
         let map;
-        function maps(){
+//функция для отрисовки карты на странице
+        function maps() {
             map = new ymaps.Map(images_contacts, {
                 center: [56.339831, 38.140545],
                 zoom: 16
             });
         }
+
         ymaps.ready(maps);
-    }else if(urlId === 'base' || urlId === 'structure'|| urlId === 'documents' || urlId === 'educations'|| urlId === 'educationStandart' || urlId === 'teacher'|| urlId === 'security' || urlId ==='scholarship' || urlId === 'available' || urlId === 'international' ){
-        debugger
+    } else if (['base', 'structure', 'documents', 'educations', 'educationStandart', 'teacher', 'security', 'scholarship', 'available', 'international', 'education'].includes(urlId)) {
         let itemtitlebefore = document.getElementById(`${urlId}`)
         let arrowImgBtn = document.createElement('button')
         arrowImgBtn.classList.add('arrow_back')
@@ -131,18 +110,13 @@ export function pageImgText(main_blocks, arrayValue,  content_block, createTitle
         arrowImg.src = '../img/arrowBack.png'
         arrowImg.classList.add('imgArrowBack')
         itemtitlebefore.append(arrowImgBtn)
-        arrowImgBtn.addEventListener('click', e =>{
+        arrowImgBtn.addEventListener('click', e => {
             history.back()
         })
     }
 }
-
-export function pageSlider(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img){
-    // let main_blocks = document.querySelector('.main__block')
-    // let arrayValue = baseBlocks.baseBlocks[urlId]
-    // let array = arrayValue[0]
-    // let content_block = document.getElementById('content_block')
-    // let createTttile = document.createElement('div')
+//функция для слайдеров, разделена по условиям так, как это кастомный слайдер, с bootstrap, менять его полностью проблематично
+export function pageSlider(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img) {
     content_block.innerHTML = ''
     // let text = array.block.textContent
     content_block.classList.add(`${urlId}`)
@@ -152,11 +126,8 @@ export function pageSlider(main_blocks, arrayValue, content_block, createTitle, 
     createTitle.classList.add('itemtitlebefore')
 
     // createTitle.textContent = array.block.title
-    if (array.block!= undefined){
+    if (array.block !== undefined) {
         createTitle.textContent = array.block.title
-    } else {
-        console.log(array)
-        console.log(array.urlId)
     }
     content_block.append(createTitle)
     if (urlId === 'spiritual') {
@@ -195,9 +166,8 @@ export function pageSlider(main_blocks, arrayValue, content_block, createTitle, 
         </div>
         `
         }
-    }else if (urlId === 'available') {
+    } else if (urlId === 'available') {
         for (let i in text) {
-            // console.log(i, array[i].textContent)
             content_block.innerHTML += `
         <div id="carouselExampleFade" class="carousel slide carousel-fade carousel_${urlId} ">
                         <div class="carousel-inner">
@@ -237,7 +207,7 @@ export function pageSlider(main_blocks, arrayValue, content_block, createTitle, 
         </div>
         `
         }
-    }else if(urlId === 'thank'){
+    } else if (urlId === 'thank') {
         for (let i in text) {
             // console.log(i, array[i].textContent)
             content_block.innerHTML += `
@@ -269,8 +239,8 @@ export function pageSlider(main_blocks, arrayValue, content_block, createTitle, 
                     </div>
         `
         }
-    } if( urlId === 'available' ){
-        debugger
+    }
+    if (urlId === 'available') {
         let itemtitlebefore = document.getElementById(`${urlId}`)
         let arrowImgBtn = document.createElement('button')
         arrowImgBtn.classList.add('arrow_back')
@@ -279,12 +249,28 @@ export function pageSlider(main_blocks, arrayValue, content_block, createTitle, 
         arrowImg.src = '../img/arrowBack.png'
         arrowImg.classList.add('imgArrowBack')
         itemtitlebefore.append(arrowImgBtn)
-        arrowImgBtn.addEventListener('click', e =>{
+        arrowImgBtn.addEventListener('click', e => {
             history.back()
         })
     }
 }
 
+//функция для дополнительных ссылок
+function linksPdf(urlId) {
+    let text_itemtext = document.querySelectorAll('.itemtext')
+    let count = 1;
+    for (const element of text_itemtext) {
+        if (element.textContent.includes('●')) {
+            if (['documents','educations','educationStandart','teacher','security','organization','education','social'].includes(urlId)) {
+                element.parentNode.style.textDecoration = 'underline'
+                element.parentNode.style.color = 'white'
+                element.parentNode.href = `../pdf/${urlId}/${urlId}${count}.pdf`
+                count++
+            }
+        } else{
+            console.log('нет ссылки')
+        }
+    }
+}
 
-
-
+linksPdf(urlId)

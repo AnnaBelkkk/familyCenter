@@ -72,6 +72,9 @@
         width: 103.5%;
         height: 103%;
     }
+    .container__header {
+        height: 10%;
+    }
 }
 
 @media screen and (max-width: 1500px) {
