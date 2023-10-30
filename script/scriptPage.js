@@ -36,21 +36,32 @@ if (urlId === 'news') {
 } else if (['spiritual', 'thank', 'available'].includes(urlId)) {
     pageSlider(main_blocks, arrayValue, content_block, createTitle, array, count, blocks, text, img)
 }
+function darkLightmode  ()  {
+    let drmode = localStorage.getItem('theme') === 'true';
+    let main__block  = document.querySelector('.main__block')
+    main__block.classList.toggle('VersionOfVisuallyText', !drmode)
+    let itemtext = document.querySelector('.itemtext')
+    itemtext.classList.toggle('VersText',!drmode)
+    let footer__container = document.querySelector('.footer__container ')
+    footer__container.classList.toggle('visuallytextmode', !drmode)
 
+    let footer_text = document.querySelector('.footer_text')
+    footer_text.classList.toggle('visuallytextmode', !drmode)
+    localStorage.setItem('theme', !drmode); //по умолчанию
+}
+const def = () => {
+    let main__block = document.querySelector('.main__block')
+    main__block.classList.toggle('VersionOfVisuallyText', localStorage.getItem('theme') === 'true')
+    let itemtext = document.querySelector('.itemtext')
+    itemtext.classList.toggle('VersText',localStorage.getItem('theme') === 'true')
+    let footer__container = document.querySelector('.footer__container ')
+    footer__container.classList.toggle('visuallytextmode', localStorage.getItem('theme') === 'true')
 
-// let isVisuallyEnabled = false;
-// let visually = document.getElementById('visually')
-// visually.addEventListener('click', function (){
-//     const main_container = document.querySelector('.main_container')
-//     let card = document.querySelectorAll('.card')
-//     isVisuallyEnabled = !isVisuallyEnabled;
-//     if (isVisuallyEnabled) {
-//         card.style.backgroundColor = '#6C584F'
-//         main_container.style.backgroundColor = '#6C584F'
-//         document.body.style.color = '';
-//     } else {
-//         card.style.backgroundColor = 'black'
-//         main_container.style.backgroundColor = 'black'
-//     }
-// })0
-
+    let footer_text = document.querySelector('.footer_text')
+    footer_text.classList.toggle('visuallytextmode', localStorage.getItem('theme') === 'true')
+}
+document.addEventListener('DOMContentLoaded', def);
+let visually = document.getElementById('visually')
+visually.addEventListener('click', function () {
+    darkLightmode()
+})

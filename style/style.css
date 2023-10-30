@@ -155,7 +155,7 @@ input::placeholder {
 
 }
 
-.header__search, header__profile, .header__visually {
+.header__search, .header__profile, .header__visually {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -424,6 +424,45 @@ option:active, option:hover {
     height: 20px;
 }
 
+
+.VersionOfVisuallyTitle{
+    font-size: 50px;
+    background-color: black;
+}
+.VersionOfVisuallyText{
+    font-size: 25px;
+    background-color: black;
+}
+.VersionOfVisuallyTextTwo{
+    margin: 86px auto;
+    width: 1123px;
+    height: 823px;
+    font-size: 30px;
+}
+.VersionOfVisuallyTextThree{
+    font-size: 30px;
+    background-color: black;
+    height: 995px;
+}
+.VersionOfVisuallyTextFour{
+    font-size: 30px;
+    background-color: black;
+    width: 1249px;
+}
+.VersionOfVisuallyTextThreeBlock{
+    font-size: 30px;
+    background-color: black;
+    height: 995px;
+    padding-top: 350px;
+}
+.visuallytextmode{
+    background-color: black;
+    font-size: 25px;
+    color: white;
+}
+.displayNone{
+    display: none;
+}
 
 
 

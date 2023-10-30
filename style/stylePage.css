@@ -45,7 +45,6 @@
     height: 392px;
     display: flex;
     flex-direction: row;
-    background-color: #6C584F;
     border: 0px;
     align-items: center;
     gap: 50px;
@@ -93,7 +92,7 @@
     display: flex;
     flex-direction: column-reverse;
 }
-.main_intelligence,.intelligence, .main_contacts,.contacts, .main_base, .base, .main_structure,.strucrure, .main_documents, .main_educations,.main_educationStandart,.main_teacher,.main_security, .main_scholarship,.main_available,.main_international{
+.main_intelligence, .main_contacts, .main_base,  .main_structure, .main_documents, .main_educations,.main_educationStandart,.main_teacher,.main_security, .main_scholarship,.main_available,.main_international{
     background-color: #363B39;
 }
 .contacts{
@@ -114,7 +113,7 @@
     font-size: 40px;
 }
 
-.main_organization,.organization,.main_spiritual,.spiritual,.spiritual, .main_service,.service,.main_medical,.medical,.social,.main_social, .education,.main_education,.help, .main_help, .schedule, .main_schedule,.thank,.main_thank{
+.main_organization,.main_spiritual, .main_service,.main_medical,.main_social,.main_education, .main_help,  .main_schedule,.main_thank{
     background-color: #6C584F;
 }
 .main_intelligence,.main_organization, .main_service, .main_education, .main_thank,.main_contacts,.main_schedule,.main_help,.main_base, .main_educationStandart,.main_teacher, .main_security, .main_international{
@@ -216,4 +215,46 @@
 }
 .text_intelligence{
     text-decoration:underline;
+}
+
+.VersionOfVisuallyTitle{
+    font-size: 50px;
+    background-color: black;
+}
+.VersionOfVisuallyText{
+    font-size: 25px;
+    background-color: black;
+}
+.VersionOfVisuallyTextTwo{
+    margin: 86px auto;
+    width: 1123px;
+    height: 823px;
+    font-size: 30px;
+}
+.VersionOfVisuallyTextThree{
+    font-size: 30px;
+    background-color: black;
+    height: 995px;
+}
+.VersionOfVisuallyTextFour{
+    font-size: 30px;
+    background-color: black;
+    width: 1249px;
+}
+.VersionOfVisuallyTextThreeBlock{
+    font-size: 30px;
+    background-color: black;
+    height: 995px;
+    padding-top: 350px;
+}
+.visuallytextmode{
+    background-color: black;
+    font-size: 25px;
+    color: white;
+}
+.displayNone{
+    display: none;
+}
+.VersText{
+    font-size: 30px;
 }
