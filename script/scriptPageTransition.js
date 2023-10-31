@@ -275,3 +275,16 @@ function linksPdf(urlId) {
 
 linksPdf(urlId)
 
+window.addEventListener('resize', function() {
+    let screenWidth = window.innerWidth;
+    let titleNav = document.getElementById(`${urlId}`);
+    if (screenWidth <= 1060) {
+        let words = titleNav.innerText.split(' ');
+        titleNav.innerText = words[0];
+        // } else if(screenWidth > 1060){
+        //     titleNav.innerText = titleNav.textContent;
+    }else {
+        titleNav.innerText = titleNav.textContent;
+    }
+
+});
